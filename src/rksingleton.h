@@ -19,8 +19,6 @@
 #ifndef _RATATOSKR_SINGLETON_H_
 #define _RATATOSKR_SINGLETON_H_
 
-#include <mutex>
-
 namespace ratatoskr
 {
 	template<class T>
