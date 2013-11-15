@@ -27,7 +27,7 @@ using namespace ratatoskr;
 
 void logging_engine::set_log_level(log_level level)
 {
-	_level = level;
+	_level.store(level);
 }
 
 const char *logging_engine::translate_log_level(log_level level)

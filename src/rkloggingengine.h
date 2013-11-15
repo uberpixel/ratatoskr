@@ -20,6 +20,7 @@
 #define _RATATOSKR_LOGGINGENGINE_H_
 
 #include <iostream>
+#include <atomic>
 #include "rklogger.h"
 
 namespace ratatoskr
@@ -37,7 +38,7 @@ namespace ratatoskr
 		virtual void significant_time_passed() {}
 		
 		void set_log_level(log_level level);
-		log_level get_log_level() const { return _level; }
+		log_level get_log_level() const { return _level.load(); }
 		
 		static const char *translate_log_level(log_level level);
 		
@@ -46,7 +47,7 @@ namespace ratatoskr
 			_level(log_level::info)
 		{}
 		
-		log_level _level;
+		std::atomic<log_level> _level;
 	};
 	
 	class stream_logging_engine : public logging_engine
